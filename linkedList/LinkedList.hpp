@@ -128,17 +128,22 @@ bool LinkedList<T>::removeBack()
 
 	// if list is not empty, go thru list
 
-	// if (!isEmpty())
-	// {
-	// 	secondintoLast = m_front;
-	// 	while (secondintoLast->getNext()->getNext() != nullptr)
-	// 	{
-	// 		lastNode = secondintoLast->getNext();
-	// 		delete lastNode;
-	// 		m_size--;
-	// 		isRemoved = true;
-	// 	}
-	// }
+	if (!isEmpty())
+	{
+		secondintoLast = m_front;
+		// iterate to penultimate node, 2nd to last
+		while(secondintoLast->getNext()->getNext()!= nullptr)
+		{
+			secondintoLast = secondintoLast->getNext();
+		}
+		// once there, set last node to penultimate->getNext
+		lastNode = secondintoLast->getNext();
+		secondintoLast->setNext(nullptr);
+		// delete last node
+		delete lastNode;
+		m_size--;
+		isRemoved = true;
+	}
 
 	return(isRemoved);
 }
