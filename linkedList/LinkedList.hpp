@@ -47,17 +47,22 @@ bool LinkedList<T>::search(T value) const
 	*/
 	// Iterate through entire list
 	// worst case is value is found in last node
-	// while (temp->getNext() != nullptr) // while not at the very last node
-	// {
-	// 	if (value == temp->getValue())
-	// 	{
-	// 		isFound = true;
-	// 	}
-	// 	else
-	// 	{
-	// 		temp = temp->getNext();
-	// 	}
-	// }
+	// make sure list is not empty, if so return false
+	if (!isEmpty())
+	{
+		while (temp != nullptr) // while not at nullptr
+		{
+			if (value == temp->getValue())
+			{
+				isFound = true;
+				break;
+			}
+			else
+			{
+				temp = temp->getNext();
+			}
+		}
+	}
 
 	return(isFound);
 }
@@ -122,12 +127,14 @@ bool LinkedList<T>::removeBack()
 	*/
 
 	// if list is not empty, go thru list
+
 	// if (!isEmpty())
 	// {
-	// 	lastNode = m_front;
-	// 	while (lastNode->getNext()->getNext() != nullptr)
+	// 	secondintoLast = m_front;
+	// 	while (secondintoLast->getNext()->getNext() != nullptr)
 	// 	{
-	//
+	// 		lastNode = secondintoLast->getNext();
+	// 		delete lastNode;
 	// 		m_size--;
 	// 		isRemoved = true;
 	// 	}
